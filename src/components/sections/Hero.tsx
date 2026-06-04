@@ -44,7 +44,7 @@ export default function Hero() {
           muted 
           loop 
           playsInline
-          poster="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop"
+          poster="/images/3049.jpg"
           className="w-full h-full object-cover"
         >
           {/* Free placeholder video for background */}

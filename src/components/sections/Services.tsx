@@ -11,7 +11,7 @@ const services = [
     title: "Mariage",
     subtitle: "Reportage de mariage",
     desc: "Capturer l'essence de votre plus beau jour avec une approche photojournalistique et cinématographique.",
-    img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop",
+    img: "/images/3051.jpg",
     className: "md:col-span-2 md:row-span-2 aspect-[4/5] md:aspect-auto md:h-full",
   },
   {
@@ -19,7 +19,7 @@ const services = [
     title: "Bébés & Famille",
     subtitle: "Séances portrait bébés",
     desc: "Des souvenirs intemporels de vos moments en famille, réalisés en lumière naturelle.",
-    img: "https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop",
+    img: "/images/3053.jpg",
     className: "md:col-span-2 md:row-span-1 aspect-video md:aspect-auto md:h-[350px]",
   },
   {
@@ -27,7 +27,7 @@ const services = [
     title: "Mode & Modèles",
     subtitle: "Photographie de modèles",
     desc: "Shooting éditorial haut de gamme pour books, agences et créateurs.",
-    img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop",
+    img: "/images/3055.jpg",
     className: "md:col-span-1 md:row-span-1 aspect-square md:aspect-auto md:h-[350px]",
   },
   {
@@ -35,7 +35,7 @@ const services = [
     title: "Shooting Créatif",
     subtitle: "Séances shooting",
     desc: "Laissez libre cours à l'imagination pour des portraits conceptuels uniques.",
-    img: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1974&auto=format&fit=crop",
+    img: "/images/3057.jpg",
     className: "md:col-span-1 md:row-span-1 aspect-square md:aspect-auto md:h-[350px]",
   }
 ];

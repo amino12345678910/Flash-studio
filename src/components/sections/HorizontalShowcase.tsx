@@ -1,89 +1,70 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const showcaseItems = [
-  { id: 1, title: "L'Élégance", desc: "Reportage Editorial", img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" },
-  { id: 2, title: "L'Émotion", desc: "Instants Volés", img: "https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" },
-  { id: 3, title: "La Lumière", desc: "Direction Artistique", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop" },
-  { id: 4, title: "Le Mouvement", desc: "Saisir l'Instant", img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" },
+  { id: 1, title: "L'Élégance", desc: "Reportage Editorial", img: "/images/3014.jpg" },
+  { id: 2, title: "L'Émotion", desc: "Instants Volés", img: "/images/3017.jpg" },
+  { id: 3, title: "La Lumière", desc: "Direction Artistique", img: "/images/3019.jpg" },
+  { id: 4, title: "Le Mouvement", desc: "Saisir l'Instant", img: "/images/3023.jpg" },
 ];
 
 export default function HorizontalShowcase() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollWrapperRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -window.innerWidth, behavior: "smooth" });
+    }
+  };
 
-    const ctx = gsap.context(() => {
-      let mm = gsap.matchMedia();
-
-      mm.add("(min-width: 768px)", () => {
-        const sections = gsap.utils.toArray(".horizontal-item");
-        
-        gsap.to(sections, {
-          xPercent: -100 * (sections.length - 1),
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            pin: true,
-            scrub: 1,
-            snap: 1 / (sections.length - 1),
-            end: () => "+=" + scrollWrapperRef.current!.offsetWidth,
-          }
-        });
-
-        // Parallax inner images
-        sections.forEach((section: any) => {
-          const img = section.querySelector(".parallax-img");
-          gsap.fromTo(img, 
-            { x: "-20vw" },
-            {
-              x: "20vw",
-              ease: "none",
-              scrollTrigger: {
-                trigger: containerRef.current,
-                scrub: 1,
-                start: "top top",
-                end: () => "+=" + scrollWrapperRef.current!.offsetWidth,
-              }
-            }
-          );
-        });
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: window.innerWidth, behavior: "smooth" });
+    }
+  };
 
   return (
-    <section ref={containerRef} className="relative bg-dark md:h-screen md:overflow-hidden">
+    <section className="relative bg-dark md:h-[80vh] overflow-hidden group">
+      {/* Navigation Arrows */}
+      <button 
+        onClick={scrollLeft}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-dark/50 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-gold hover:text-dark cursor-pointer border border-white/10"
+      >
+        <ChevronLeft size={32} strokeWidth={1} />
+      </button>
+      <button 
+        onClick={scrollRight}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-dark/50 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-gold hover:text-dark cursor-pointer border border-white/10"
+      >
+        <ChevronRight size={32} strokeWidth={1} />
+      </button>
+
       <div 
-        ref={scrollWrapperRef} 
-        className="flex flex-col md:flex-row md:h-full md:w-[400vw]"
+        ref={scrollContainerRef}
+        className="flex overflow-x-auto snap-x snap-mandatory h-full w-full scrollbar-hide"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {showcaseItems.map((item, index) => (
           <div 
             key={item.id} 
-            className="horizontal-item relative w-full h-[60vh] md:h-full md:w-screen flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r border-foreground/10"
+            className="snap-center shrink-0 w-full md:w-screen h-[60vh] md:h-full relative flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r border-foreground/10"
           >
-            {/* Parallax Image Container */}
-            <div className="absolute inset-0 w-full h-full md:w-[140%] md:-left-[20%]">
+            {/* Image Container */}
+            <div className="absolute inset-0 w-full h-full">
               <img 
                 src={item.img} 
                 alt={item.title} 
-                className="parallax-img w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
               />
             </div>
             
             {/* Overlay */}
-            <div className="absolute inset-0 bg-dark/40"></div>
+            <div className="absolute inset-0 bg-dark/40 pointer-events-none"></div>
 
             {/* Content */}
-            <div className="relative z-10 text-center px-6 mix-blend-difference text-white">
+            <div className="relative z-10 text-center px-6 mix-blend-difference text-white pointer-events-none">
               <span className="text-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">
                 {item.desc}
               </span>

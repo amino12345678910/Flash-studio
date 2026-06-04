@@ -98,7 +98,7 @@ export default function About() {
           <div className="relative z-10 aspect-[3/4] overflow-hidden bg-dark">
             <img 
               ref={imageRef}
-              src="https://images.unsplash.com/photo-1554046920-90dcac028a05?q=80&w=1964&auto=format&fit=crop" 
+              src="/images/3025.jpg" 
               alt="Portrait of the photographer"
               className="w-full h-[120%] object-cover grayscale opacity-90"
             />

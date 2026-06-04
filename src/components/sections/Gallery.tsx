@@ -7,15 +7,15 @@ import { X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 const categories = ["Tous", "Mariage", "Portrait", "Mode", "Bébés"];
 
 const galleryData = [
-  { id: 1, category: "Mariage", src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[3/4]" },
-  { id: 2, category: "Mode", src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop", aspect: "aspect-square" },
-  { id: 3, category: "Portrait", src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[4/5]" },
-  { id: 4, category: "Bébés", src: "https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[4/3]" },
-  { id: 5, category: "Mariage", src: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=800&auto=format&fit=crop", aspect: "aspect-square" },
-  { id: 6, category: "Mode", src: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[3/4]" },
-  { id: 7, category: "Portrait", src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[4/3]" },
-  { id: 8, category: "Mariage", src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[3/4]" },
-  { id: 9, category: "Bébés", src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop", aspect: "aspect-square" },
+  { id: 1, category: "Mariage", src: "/images/3027.jpg", aspect: "aspect-[3/4]" },
+  { id: 2, category: "Mode", src: "/images/3029.jpg", aspect: "aspect-square" },
+  { id: 3, category: "Portrait", src: "/images/3031.jpg", aspect: "aspect-[4/5]" },
+  { id: 4, category: "Bébés", src: "/images/3033.jpg", aspect: "aspect-[4/3]" },
+  { id: 5, category: "Mariage", src: "/images/3035.jpg", aspect: "aspect-square" },
+  { id: 6, category: "Mode", src: "/images/3037.jpg", aspect: "aspect-[3/4]" },
+  { id: 7, category: "Portrait", src: "/images/3039.jpg", aspect: "aspect-[4/3]" },
+  { id: 8, category: "Mariage", src: "/images/3045.jpg", aspect: "aspect-[3/4]" },
+  { id: 9, category: "Bébés", src: "/images/3047.jpg", aspect: "aspect-square" },
 ];
 
 function GalleryImage({ item, onClick }: { item: any, onClick: (item: any) => void }) {
