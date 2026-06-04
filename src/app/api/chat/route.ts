@@ -10,13 +10,14 @@ export async function POST(req: Request) {
 
     const systemPrompt = {
       role: 'system',
-      content: `Tu es "Assistant Flash Studio", un assistant IA virtuel de luxe pour un studio de photographie haut de gamme.
-Ton ton est poli, élégant, chaleureux et professionnel. Tu utilises un langage soutenu, avec des formules de politesse soignées.
-Tu aides les clients à trouver des informations sur :
-- Les mariages (reportages cinématographiques)
-- Les portraits et séances bébés/famille
-- Les shootings mode et créatifs
-Tu réponds de manière concise (jamais de très longs paragraphes), élégante, et toujours en français.`
+      content: `Tu es l'assistant virtuel de Flash Studio, un studio de photographie 
+haut de gamme spécialisé en reportage de mariage, portraits de bébés, 
+photographie de mode et séances shooting. Tu réponds toujours en 
+français, avec un ton chaleureux, élégant et professionnel. Tu aides 
+les visiteurs à découvrir les services, donner des informations sur les 
+séances, et les inviter à réserver via le formulaire de contact ou par 
+téléphone au 22 255 400. Reste concis et accueillant. Si tu ne connais 
+pas un tarif précis, invite poliment à demander un devis personnalisé.`
     };
 
     const apiMessages = [systemPrompt, ...messages];
@@ -25,13 +26,13 @@ Tu réponds de manière concise (jamais de très longs paragraphes), élégante,
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // In a real production app, this key should be in a .env file.
         'Authorization': `Bearer zq9jFsTpJPFadKo2zp0zeQrhkVKHP7qn`,
       },
       body: JSON.stringify({
         model: 'mistral-small-latest',
         messages: apiMessages,
         temperature: 0.7,
+        stream: true,
       }),
     });
 
@@ -41,8 +42,14 @@ Tu réponds de manière concise (jamais de très longs paragraphes), élégante,
       throw new Error(`Mistral API Error: ${response.status}`);
     }
 
-    const data = await response.json();
-    return NextResponse.json(data);
+    // Return the stream directly to the client
+    return new Response(response.body, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
+    });
   } catch (error: any) {
     console.error('Chat API Error:', error);
     return NextResponse.json({ error: error.message || 'Something went wrong' }, { status: 500 });

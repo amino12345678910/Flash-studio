@@ -127,16 +127,45 @@ export default function Chatbot() {
       });
 
       if (!res.ok) throw new Error("API Error");
+      if (!res.body) throw new Error("No body");
 
-      const data = await res.json();
-      const botReply = data.choices?.[0]?.message?.content || "Désolé, je rencontre un petit problème technique.";
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder("utf-8");
       
-      setMessages(prev => [...prev, { role: "assistant", content: botReply, id: Date.now().toString() }]);
+      let botReply = "";
+      const botMsgId = Date.now().toString();
+      
+      setMessages(prev => [...prev, { role: "assistant", content: "", id: botMsgId }]);
+      setIsTyping(false);
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split("\n");
+        
+        for (const line of lines) {
+          if (line.startsWith("data: ")) {
+            const dataStr = line.slice(6).trim();
+            if (dataStr === "[DONE]") continue;
+            try {
+              const data = JSON.parse(dataStr);
+              const content = data.choices[0]?.delta?.content;
+              if (content) {
+                botReply += content;
+                setMessages(prev => prev.map(msg => 
+                  msg.id === botMsgId ? { ...msg, content: botReply } : msg
+                ));
+              }
+            } catch (e) {}
+          }
+        }
+      }
     } catch (error) {
       console.error(error);
-      setMessages(prev => [...prev, { role: "assistant", content: "Désolé, je suis momentanément indisponible.", id: Date.now().toString() }]);
-    } finally {
       setIsTyping(false);
+      setMessages(prev => [...prev, { role: "assistant", content: "Désolé, je suis momentanément indisponible.", id: Date.now().toString() }]);
     }
   };
 
@@ -219,8 +248,8 @@ export default function Chatbot() {
                         : "bg-[#111111] text-[#F5F1EA] rounded-bl-sm border border-gold/20"
                     }`}
                   >
-                    {msg.role === "assistant" && idx === messages.length - 1 ? (
-                      <TypewriterText text={msg.content} />
+                    {msg.role === "assistant" && idx === messages.length - 1 && !msg.content ? (
+                      <span className="opacity-50">...</span>
                     ) : (
                       msg.content
                     )}
