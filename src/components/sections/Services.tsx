@@ -12,7 +12,7 @@ const services = [
     title: "Mariage",
     subtitle: "Reportage de mariage",
     desc: "Capturer l'essence de votre plus beau jour avec une approche photojournalistique et cinématographique.",
-    img: "/images/3051.jpg",
+    img: "/images/service-mariage.jpg",
     className: "md:col-span-2 md:row-span-2 aspect-[4/5] md:aspect-auto md:h-full",
   },
   {
@@ -20,7 +20,7 @@ const services = [
     title: "Bébés & Famille",
     subtitle: "Séances portrait bébés",
     desc: "Des souvenirs intemporels de vos moments en famille, réalisés en lumière naturelle.",
-    img: "/images/3053.jpg",
+    img: "/images/service-bebes.jpg",
     className: "md:col-span-2 md:row-span-1 aspect-video md:aspect-auto md:h-[350px]",
   },
   {
