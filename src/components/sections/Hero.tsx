@@ -44,12 +44,11 @@ export default function Hero() {
           muted 
           loop 
           playsInline
-          preload="none"
-          poster="/images/3049.jpg"
+          poster="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop"
           className="w-full h-full object-cover"
         >
           {/* Free placeholder video for background */}
-          <source src="/hero-video-2.mp4" type="video/mp4" />
+          <source src="/hero-video.mp4" type="video/mp4" />
         </video>
         
         {/* Dark Gradient Overlays */}

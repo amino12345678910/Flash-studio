@@ -8,6 +8,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import PageTransition from "@/components/layout/PageTransition";
 import CustomCursor from "@/components/layout/CustomCursor";
 import Preloader from "@/components/layout/Preloader";
+import Chatbot from "@/components/layout/Chatbot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -89,6 +90,7 @@ export default function RootLayout({
             {children}
           </PageTransition>
           <Footer />
+          <Chatbot />
         </SmoothScroll>
       </body>
     </html>
