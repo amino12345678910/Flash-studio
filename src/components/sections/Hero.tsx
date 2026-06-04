@@ -48,7 +48,7 @@ export default function Hero() {
           className="w-full h-full object-cover"
         >
           {/* Free placeholder video for background */}
-          <source src="https://cdn.pixabay.com/video/2016/09/13/5053-181163140_large.mp4" type="video/mp4" />
+          <source src="/hero-video-2.mp4" type="video/mp4" />
         </video>
         
         {/* Dark Gradient Overlays */}
