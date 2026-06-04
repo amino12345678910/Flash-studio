@@ -242,7 +242,7 @@ export default function Chatbot() {
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div 
-                    className={`max-w-[85%] p-3 rounded-2xl text-sm font-sans ${
+                    className={`max-w-[85%] p-3 rounded-2xl text-sm font-sans whitespace-pre-wrap leading-relaxed ${
                       msg.role === "user" 
                         ? "bg-[#C9A86A] text-dark rounded-br-sm" 
                         : "bg-[#111111] text-[#F5F1EA] rounded-bl-sm border border-gold/20"

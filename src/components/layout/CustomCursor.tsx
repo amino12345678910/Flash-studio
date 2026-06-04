@@ -49,7 +49,7 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-gold rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:flex items-center justify-center overflow-hidden"
+        className="fixed top-0 left-0 w-4 h-4 bg-gold rounded-full pointer-events-none z-[999999] mix-blend-difference hidden md:flex items-center justify-center overflow-hidden"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
