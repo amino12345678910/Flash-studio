@@ -89,7 +89,7 @@ export default function Services() {
           {services.map((service) => (
             <div 
               key={service.id} 
-              className={`group relative overflow-hidden bg-dark cursor-pointer service-card opacity-0 translate-y-16 ${service.className}`}
+              className={`group relative overflow-hidden bg-dark cursor-pointer service-card opacity-0 translate-y-16 will-change-transform ${service.className}`}
             >
               {/* Background Image */}
               <div className="absolute inset-0">

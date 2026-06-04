@@ -8,15 +8,22 @@ import Image from "next/image";
 const categories = ["Tous", "Mariage", "Portrait", "Mode", "Bébés"];
 
 const galleryData = [
-  { id: 1, category: "Mariage", src: "/images/3027.jpg", aspect: "aspect-[3/4]" },
-  { id: 2, category: "Mode", src: "/images/3029.jpg", aspect: "aspect-square" },
-  { id: 3, category: "Portrait", src: "/images/3031.jpg", aspect: "aspect-[4/5]" },
-  { id: 4, category: "Bébés", src: "/images/3033.jpg", aspect: "aspect-[4/3]" },
-  { id: 5, category: "Mariage", src: "/images/3035.jpg", aspect: "aspect-square" },
-  { id: 6, category: "Mode", src: "/images/3037.jpg", aspect: "aspect-[3/4]" },
-  { id: 7, category: "Portrait", src: "/images/3039.jpg", aspect: "aspect-[4/3]" },
-  { id: 8, category: "Mariage", src: "/images/3045.jpg", aspect: "aspect-[3/4]" },
-  { id: 9, category: "Bébés", src: "/images/3047.jpg", aspect: "aspect-square" },
+  { id: 1, category: "Mariage", src: "/images/gallery/mariage-1.jpg", aspect: "aspect-[3/4]" },
+  { id: 2, category: "Portrait", src: "/images/gallery/portrait-1.jpg", aspect: "aspect-[4/5]" },
+  { id: 3, category: "Bébés", src: "/images/gallery/bebe-1.jpg", aspect: "aspect-[4/5]" },
+  { id: 4, category: "Mode", src: "/images/gallery/mode-1.jpg", aspect: "aspect-[3/4]" },
+  { id: 5, category: "Mariage", src: "/images/gallery/mariage-2.jpg", aspect: "aspect-square" },
+  { id: 6, category: "Portrait", src: "/images/gallery/portrait-2.jpg", aspect: "aspect-[4/3]" },
+  { id: 7, category: "Bébés", src: "/images/gallery/bebe-2.jpg", aspect: "aspect-[3/4]" },
+  { id: 8, category: "Mode", src: "/images/gallery/mode-2.jpg", aspect: "aspect-[4/3]" },
+  { id: 9, category: "Mariage", src: "/images/gallery/mariage-3.jpg", aspect: "aspect-[3/4]" },
+  { id: 10, category: "Portrait", src: "/images/gallery/portrait-3.jpg", aspect: "aspect-square" },
+  { id: 11, category: "Bébés", src: "/images/gallery/bebe-3.jpg", aspect: "aspect-[4/3]" },
+  { id: 12, category: "Mode", src: "/images/gallery/mode-3.jpg", aspect: "aspect-[3/4]" },
+  { id: 13, category: "Portrait", src: "/images/gallery/portrait-4.jpg", aspect: "aspect-[4/5]" },
+  { id: 14, category: "Bébés", src: "/images/gallery/bebe-4.jpg", aspect: "aspect-square" },
+  { id: 15, category: "Mode", src: "/images/gallery/mode-4.jpg", aspect: "aspect-[4/5]" },
+  { id: 16, category: "Bébés", src: "/images/gallery/bebe-5.jpg", aspect: "aspect-[3/4]" },
 ];
 
 function GalleryImage({ item, onClick }: { item: any, onClick: (item: any) => void }) {
@@ -29,7 +36,7 @@ function GalleryImage({ item, onClick }: { item: any, onClick: (item: any) => vo
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
-      className="break-inside-avoid mb-6 cursor-pointer group relative overflow-hidden cursor-voir"
+      className="break-inside-avoid mb-6 cursor-pointer group relative overflow-hidden cursor-voir will-change-transform"
       onClick={() => onClick(item)}
     >
       <div className={`relative w-full ${item.aspect} bg-dark overflow-hidden`}>
