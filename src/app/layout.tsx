@@ -6,6 +6,8 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import PageTransition from "@/components/layout/PageTransition";
+import CustomCursor from "@/components/layout/CustomCursor";
+import Preloader from "@/components/layout/Preloader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +34,8 @@ export default function RootLayout({
     <html lang="en" className="lenis">
       <body className={`${inter.variable} ${cormorant.variable} antialiased bg-background text-foreground`}>
         <div className="noise-overlay"></div>
+        <Preloader />
+        <CustomCursor />
         <SmoothScroll>
           <Navigation />
           <PageTransition>

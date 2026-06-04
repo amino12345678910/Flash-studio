@@ -28,7 +28,7 @@ function GalleryImage({ item, onClick }: { item: any, onClick: (item: any) => vo
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
-      className="break-inside-avoid mb-6 cursor-pointer group relative overflow-hidden"
+      className="break-inside-avoid mb-6 cursor-pointer group relative overflow-hidden cursor-voir"
       onClick={() => onClick(item)}
     >
       <div className={`relative w-full ${item.aspect} bg-dark overflow-hidden`}>
