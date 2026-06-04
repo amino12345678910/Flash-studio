@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import Image from "next/image";
 
 const categories = ["Tous", "Mariage", "Portrait", "Mode", "Bébés"];
 
@@ -32,12 +33,13 @@ function GalleryImage({ item, onClick }: { item: any, onClick: (item: any) => vo
       onClick={() => onClick(item)}
     >
       <div className={`relative w-full ${item.aspect} bg-dark overflow-hidden`}>
-        <img
+        <Image
           src={item.src}
           alt={`${item.category} photography`}
-          loading="lazy"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           onLoad={() => setLoaded(true)}
-          className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 ${loaded ? 'blur-0 grayscale-0' : 'blur-xl grayscale scale-110'}`}
+          className={`object-cover transition-all duration-700 ease-out group-hover:scale-105 ${loaded ? 'blur-0 grayscale-0' : 'blur-xl grayscale scale-110'}`}
         />
         
         {/* Hover Overlay */}

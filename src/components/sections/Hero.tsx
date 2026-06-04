@@ -44,6 +44,7 @@ export default function Hero() {
           muted 
           loop 
           playsInline
+          preload="none"
           poster="/images/3049.jpg"
           className="w-full h-full object-cover"
         >

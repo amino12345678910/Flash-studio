@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
@@ -92,10 +93,12 @@ export default function Services() {
             >
               {/* Background Image */}
               <div className="absolute inset-0">
-                <img 
+                <Image 
                   src={service.img} 
                   alt={service.title} 
-                  className="w-full h-full object-cover transition-all duration-700 ease-out grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-60 group-hover:opacity-90"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-all duration-700 ease-out grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-60 group-hover:opacity-90"
                 />
               </div>
               

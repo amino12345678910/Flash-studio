@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const showcaseItems = [
   { id: 1, title: "L'Élégance", desc: "Reportage Editorial", img: "/images/3014.jpg" },
@@ -53,10 +54,12 @@ export default function HorizontalShowcase() {
           >
             {/* Image Container */}
             <div className="absolute inset-0 w-full h-full">
-              <img 
+              <Image 
                 src={item.img} 
                 alt={item.title} 
-                className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                fill
+                sizes="100vw"
+                className="object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
               />
             </div>
             

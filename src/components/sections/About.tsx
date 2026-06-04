@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useInView } from "framer-motion";
+import Image from "next/image";
 
 function useCounter(end: number, duration: number = 2, inView: boolean) {
   const [count, setCount] = useState(0);
@@ -96,11 +97,13 @@ export default function About() {
         <div className="w-full lg:w-5/12 relative">
           <div className="absolute -inset-4 md:-inset-6 border border-gold/40 z-0 translate-x-4 translate-y-4"></div>
           <div className="relative z-10 aspect-[3/4] overflow-hidden bg-dark">
-            <img 
-              ref={imageRef}
+            <Image 
+              ref={imageRef as any}
               src="/images/3025.jpg" 
               alt="Portrait of the photographer"
-              className="w-full h-[120%] object-cover grayscale opacity-90"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover grayscale opacity-90 scale-[1.2]"
             />
           </div>
         </div>
